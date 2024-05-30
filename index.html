@@ -14,13 +14,13 @@
       </div>
     </main> -->
     <div class="container">
-      <div class="chat-header">
+      <div class="chat-header" id="chatHeader">
         <p id="chatName">Stelle</p>
         <input type="text" id="chatNameEdit" />
       </div>
-      <div class="chat">
+      <div class="chat" id="chatContainer">
         <div class="chat-messages" id="chatMessages">
-          <div class="SenderMessage">
+          <!-- <div class="SenderMessage">
             <div class="message-header">
               <div class="message-content">
                 <span class="username">Stelle</span>
@@ -115,7 +115,7 @@
               </div>
               <img src="profilePics/stelle.jpg" alt="stelle" />
             </div>
-          </div>
+          </div> -->
         </div>
         <div class="MessageSend">
           <button class="addMessage leftM" onclick="AddLeftMessage('left')">
@@ -557,6 +557,12 @@
       </div> -->
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.11/html-to-image.min.js"
+      integrity="sha512-7tWCgq9tTYS/QkGVyKrtLpqAoMV9XIUxoou+sPUypsaZx56cYR/qio84fPK9EvJJtKvJEwt7vkn6je5UVzGevw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script src="script.js"></script>
   </body>
 </html>

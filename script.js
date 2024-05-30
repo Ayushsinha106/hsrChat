@@ -404,28 +404,30 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // save chat as image
+
 document
   .getElementById("saveChatButton")
   .addEventListener("click", function () {
-    const chatContainer = document.getElementById("chatMessages");
-    const originalHeight = chatContainer.style.height;
+    const chatContainer = document.getElementById("chatContainer");
+    const chatHeader = document.getElementById("chatHeader");
+    const chatMessages = document.getElementById("chatMessages");
+    const container = document.querySelector(".container");
 
-    // Temporarily expand the chat container to show all messages
+    // Save original styles
+    const originalChatHeight = chatContainer.style.height;
+    const originalChatOverflow = chatContainer.style.overflowY;
+    const originalHeaderPosition = chatHeader.style.position;
+
+    // Temporarily set styles to capture the entire chat
     chatContainer.style.height = "auto";
+    chatContainer.style.overflowY = "visible";
+    chatHeader.style.position = "static";
 
     // Use html2canvas to capture the full chat content
-    html2canvas(chatContainer, { useCORS: true, logging: true })
-      .then((canvas) => {
-        // Restore the original height
-        chatContainer.style.height = originalHeight;
-
-        // Create a link to download the image
-        const link = document.createElement("a");
-        link.href = canvas.toDataURL("image/png");
-        link.download = "chat.png";
-        link.click();
-      })
-      .catch((err) => {
-        console.error("Error capturing chat content:", err);
-      });
+    htmlToImage.toPng(container).then(function (dataUrl) {
+      var link = document.createElement("a");
+      link.download = "node.png";
+      link.href = dataUrl;
+      link.click();
+    });
   });
