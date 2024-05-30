@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HSR chat</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- <main>
+      <div class="chat-selection">
+        <div class="character-choose"></div>
+      </div>
+    </main> -->
+    <div class="container">
+      <div class="chat-header">
+        <p id="chatName">Stelle</p>
+        <input type="text" id="chatNameEdit" />
+      </div>
+      <div class="chat">
+        <div class="chat-messages">
+          <!-- <div class="SenderMessage">
+            <div class="message-header">
+              <div class="message-content">
+                <span class="username">Stelle</span>
+                <div class="message-box">
+                  <p>Found a strange item...</p>
+                </div>
+              </div>
+              <img src="profilePics/stelle.jpg" alt="stelle" />
+            </div>
+          </div>
+          <div class="ReceiverMessage">
+            <div class="message-header receiverHeader">
+              <img src="march7.png" alt="stelle" />
+              <div class="message-content receiverContent">
+                <span class="username">March 7th</span>
+                <div class="message-box receiver">
+                  <p>Relic</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="SenderMessage">
+            <div class="message-header">
+              <div class="message-content">
+                <span class="username">Stelle</span>
+                <div class="message-box">
+                  <p>Relic WHAT??</p>
+                </div>
+              </div>
+              <img src="profilePics/stelle.jpg" alt="stelle" />
+            </div>
+          </div>
+          <div class="ReceiverMessage">
+            <div class="message-header receiverHeader">
+              <img src="march7.png" alt="stelle" />
+              <div class="message-content receiverContent">
+                <span class="username">March 7th</span>
+                <div class="message-box receiver">
+                  <p>
+                    Relic is RELIC Lorem ipsum dolor sit amet consectetur
+                    adipisicing elit. Rerum, consequatur adipisci molestias sit
+                    tenetur ad. Consectetur, doloribus! Eligendi iste reiciendis
+                    enim error, modi assumenda aut quae accusamus iusto quidem?
+                    Laborum dignissimos ab, fugit animi sapiente tenetur, nulla
+                    dolor, sit quod a autem maxime quia nobis. Dicta eligendi
+                    suscipit saepe nemo?
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ReceiverMessage">
+            <div class="message-header receiverHeader">
+              <img src="march7.png" alt="stelle" />
+              <div class="message-content receiverContent">
+                <span class="username">March 7th</span>
+                <div class="message-box receiver">
+                  <p>Relic is RELIC</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="SenderMessage">
+            <div class="message-header">
+              <div class="message-content">
+                <span class="username">Stelle</span>
+                <div class="message-box">
+                  <p>OK</p>
+                </div>
+              </div>
+              <img src="profilePics/stelle.jpg" alt="stelle" />
+            </div>
+          </div>
+          <div class="ReceiverMessage">
+            <div class="message-header receiverHeader">
+              <img src="march7.png" alt="stelle" />
+              <div class="message-content receiverContent">
+                <span class="username">March 7th</span>
+                <div class="message-box receiver">
+                  <img
+                    src="Pom-Pom Gallery - March 7th/March 7th_1.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="SenderMessage">
+            <div class="message-header">
+              <div class="message-content">
+                <span class="username">Stelle</span>
+                <div class="message-box">
+                  <img
+                    src="Pom-Pom Gallery - March 7th/March 7th_2.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <img src="profilePics/stelle.jpg" alt="stelle" />
+            </div>
+          </div> -->
+        </div>
+        <div class="MessageSend">
+          <button class="addMessage leftM" onclick="AddLeftMessage('left')">
+            <img src="add.png" alt="leftAdd" />
+            <button
+              class="addMessage rightM"
+              onclick="AddRightMessage('right')"
+            >
+              <img src="add.png" alt="rightAdd" />
+            </button>
+          </button>
+        </div>
+      </div>
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <button class="characterSelector" onclick="charSelector()">
+            <img src="" alt="character selector" id="rightSelectedCharacter" />
+            <span id="rightSelectedCharacterName"></span>
+          </button>
+          <form id="customCharaNameForm">
+            <input
+              type="text"
+              id="customCharaNameInput"
+              placeholder="Enter the character Name..."
+              required
+            />
+            <button id="customCharaNameSend">Send</button>
+          </form>
+          <form id="messageForm">
+            <input
+              type="text"
+              id="rightMessageInput"
+              placeholder="Type your message..."
+              required
+            />
+            <button id="rightMessageSend">Send</button>
+          </form>
+          <form id="customCharaForm">
+            <input
+              type="text"
+              id="customCharaInput"
+              placeholder="paste Link OR"
+            />
+            <input
+              type="file"
+              name="customCharaForm"
+              id="customCharaFile"
+              accept="image/*"
+              onchange="customCharaSendFunc()"
+            />
+            <button id="customCharaSend">Send</button>
+          </form>
+          <button class="sticker">
+            <img src="stickers/sticker_224.png" alt="" />
+          </button>
+        </div>
+      </div>
+      <div class="dropdownContainer">
+        <span class="closeSelector">&times;</span>
+
+        <ul class="dropdown-menu">
+          <input type="text" id="dropdownSearch" placeholder="Search..." />
+          <li>
+            <a class="dropdown-item">Custom character</a>
+          </li>
+
+          <li></li>
+          <li>
+            <a class="dropdown-item">Acheron</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Anonymous</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Argenti</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Arlan</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Asta</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Aventurine</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Bailu</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Black Swan</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Blade</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Boothill</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Bronya</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Caelus</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Clara</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Dan Heng</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Dan Heng • Imbibitor Lunae</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Dr. Ratio</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Firefly</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Fu Xuan</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Gallagher</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Gepard</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Guinaifen</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Hanya</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Herta</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Himeko</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Hook</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Huohuo</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Jade</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Jing Yuan</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Jingliu</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Kafka</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Luka</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Luocha</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Lynx</a>
+          </li>
+          <li>
+            <a class="dropdown-item">March 7th</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Misha</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Natasha</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Pela</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Pom-Pom</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Qingque</a>
+          </li>
+
+          <li>
+            <a class="dropdown-item">Robin</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Ruan Mei</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Sampo</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Seele</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Serval</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Silver Wolf</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Sparkle</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Stelle</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Sushang</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Tingyun</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Topaz</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Welt</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Xueyi</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Yanqing</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Yukong</a>
+          </li>
+        </ul>
+      </div>
+      <div class="stickerConatiner">
+        <div class="heading">
+          <h2 id="posting">you are posting as Dan Heng</h2>
+          <div class="closeSticker">
+            <span>&times;</span>
+          </div>
+        </div>
+        <hr />
+        <div class="stickerList"></div>
+      </div>
+      <!-- <div class="messageSendDiv">
+        <button type="button" class="dropdown-toggle">
+          <img
+            width="30px"
+            height="30px"
+            src="https://static.wikia.nocookie.net/houkai-star-rail/images/7/7b/Character_Stelle_%28Harmony%29_Icon.png"
+          />
+        </button>
+        <ul class="dropdown-content">
+          <li>
+            <a class="dropdown-item">Group chat</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Custom character</a>
+          </li>
+
+          <li>
+            <hr class="dropdown-divider" />
+          </li>
+          <li>
+            <a class="dropdown-item">Acheron</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Anonymous</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Argenti</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Arlan</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Asta</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Aventurine</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Bailu</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Black Swan</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Blade</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Boothill</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Bronya</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Caelus</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Clara</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Dan Heng</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Dan Heng • Imbibitor Lunae</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Dr. Ratio</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Firefly</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Fu Xuan</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Gallagher</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Gepard</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Guinaifen</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Hanya</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Herta</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Himeko</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Hook</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Huohuo</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Jade</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Jing Yuan</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Jingliu</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Kafka</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Luka</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Luocha</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Lynx</a>
+          </li>
+          <li>
+            <a class="dropdown-item">March 7th</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Misha</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Natasha</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Pela</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Pom-Pom</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Qingque</a>
+          </li>
+
+          <li>
+            <a class="dropdown-item">Robin</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Ruan Mei</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Sampo</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Seele</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Serval</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Silver Wolf</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Sparkle</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Stelle</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Sushang</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Tingyun</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Topaz</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Welt</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Xueyi</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Yanqing</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Yukong</a>
+          </li>
+        </ul>
+        <input
+          type="text"
+          aria-label="Textbox"
+          aria-describedby="basic-addon1"
+          formcontrolname="textbox"
+          class="inputText"
+          placeholder="Type message here..."
+        /><button type="submit" id="send" class="sendButton">Send</button>
+      </div> -->
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
