@@ -82,6 +82,13 @@ main{
     border-radius: 10px; /* roundness of the scrollbar thumb */
     border: 2px solid #dfddde; /* creates padding around the thumb */
 }
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.hide-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
 .chat-header{
     background-color: #dfddde;
     color: black;

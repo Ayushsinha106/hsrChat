@@ -20,6 +20,7 @@ const customCharaFile = document.querySelector("#customCharaFile");
 const customCharaNameForm = document.querySelector("#customCharaNameForm");
 const customCharaNameInput = document.querySelector("#customCharaNameInput");
 const customCharaNameSend = document.querySelector("#customCharaNameSend");
+const customCharaSend = document.querySelector("#customCharaSend");
 const post = document.querySelector("#posting");
 const rightSelectedCharacter = document.querySelector(
   "#rightSelectedCharacter"
@@ -27,8 +28,11 @@ const rightSelectedCharacter = document.querySelector(
 const rightSelectedCharacterName = document.querySelector(
   "#rightSelectedCharacterName"
 );
+const chatContainer = document.getElementById("chatContainer");
+
 const profilePics = [
   "Acheron.jpg",
+  "Anonymous.jpg",
   "Argenti.jpg",
   "Arlan.jpg",
   "Asta.jpg",
@@ -36,10 +40,13 @@ const profilePics = [
   "Bailu.jpg",
   "Black _swan.jpg",
   "Blade.jpg",
+  "Boothill.jpg",
   "Bronya.jpg",
+  "Caelus.jpg",
   "Clara.jpg",
   "Dan _Heng.jpg",
   "Dr _Ratio.jpg",
+  "Firefly.jpg",
   "Fu _Xuan.jpg",
   "Gallagher.jpg",
   "Gepard.jpg",
@@ -254,6 +261,22 @@ customCharaNameSend.onclick = (e) => {
   }
 };
 
+customCharaSend.onclick = (e) => {
+  e.preventDefault();
+  const url = customCharaInput.value;
+  rightSelectedCharacter.src = url;
+  rightSelectedCharacterName.innerHTML = "Custom";
+  customCharaForm.style.display = "none";
+  customCharaNameForm.style.display = "flex";
+  customCharaNameInput.focus();
+  if (Messagesend == "right") {
+    rightUrl = url;
+  }
+  if (Messagesend == "left") {
+    leftUrl = url;
+  }
+};
+
 //search
 document.addEventListener("DOMContentLoaded", function () {
   var input = document.getElementById("dropdownSearch");
@@ -407,27 +430,45 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document
   .getElementById("saveChatButton")
-  .addEventListener("click", function () {
-    const chatContainer = document.getElementById("chatContainer");
+  .addEventListener("click", async function () {
     const chatHeader = document.getElementById("chatHeader");
     const chatMessages = document.getElementById("chatMessages");
     const container = document.querySelector(".container");
+    const totalHeight = chatMessages.scrollHeight;
+    const viewportHeight = chatContainer.clientHeight;
+    const numberOfScreenshots = Math.ceil(totalHeight / viewportHeight);
 
     // Save original styles
     const originalChatHeight = chatContainer.style.height;
     const originalChatOverflow = chatContainer.style.overflowY;
     const originalHeaderPosition = chatHeader.style.position;
 
+    const screenshots = [];
+
+    //scrolltest
+    // const Height = window.innerHeight;
+    // chatContainer.scrollBy({
+    //   top: viewportHeight,
+    //   left: 0,
+    //   behavior: "smooth",
+    // });
+
     // Temporarily set styles to capture the entire chat
-    chatContainer.style.height = "auto";
-    chatContainer.style.overflowY = "visible";
-    chatHeader.style.position = "static";
+    chatContainer.classList.add("hide-scrollbar");
+    chatMessages.classList.add("hide-scrollbar");
+
+    htmlToImage.toCanvas(container).then(function (canvas) {
+      screenshots.push(canvas);
+    });
 
     // Use html2canvas to capture the full chat content
     htmlToImage.toPng(container).then(function (dataUrl) {
+      console.log(dataUrl);
       var link = document.createElement("a");
-      link.download = "node.png";
+      link.download = "chat.png";
       link.href = dataUrl;
       link.click();
     });
+    chatContainer.classList.remove("hide-scrollbar");
+    chatMessages.classList.remove("hide-scrollbar");
   });
