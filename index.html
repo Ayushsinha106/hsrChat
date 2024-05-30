@@ -19,8 +19,8 @@
         <input type="text" id="chatNameEdit" />
       </div>
       <div class="chat">
-        <div class="chat-messages">
-          <!-- <div class="SenderMessage">
+        <div class="chat-messages" id="chatMessages">
+          <div class="SenderMessage">
             <div class="message-header">
               <div class="message-content">
                 <span class="username">Stelle</span>
@@ -100,10 +100,7 @@
               <div class="message-content receiverContent">
                 <span class="username">March 7th</span>
                 <div class="message-box receiver">
-                  <img
-                    src="Pom-Pom Gallery - March 7th/March 7th_1.png"
-                    alt=""
-                  />
+                  <img src="stickers/sticker_0.png" alt="" />
                 </div>
               </div>
             </div>
@@ -113,15 +110,12 @@
               <div class="message-content">
                 <span class="username">Stelle</span>
                 <div class="message-box">
-                  <img
-                    src="Pom-Pom Gallery - March 7th/March 7th_2.png"
-                    alt=""
-                  />
+                  <img src="stickers/sticker_0.png" alt="" />
                 </div>
               </div>
               <img src="profilePics/stelle.jpg" alt="stelle" />
             </div>
-          </div> -->
+          </div>
         </div>
         <div class="MessageSend">
           <button class="addMessage leftM" onclick="AddLeftMessage('left')">
@@ -367,6 +361,8 @@
         <hr />
         <div class="stickerList"></div>
       </div>
+      <button id="saveChatButton">Save Chat as Image</button>
+
       <!-- <div class="messageSendDiv">
         <button type="button" class="dropdown-toggle">
           <img
@@ -560,7 +556,7 @@
         /><button type="submit" id="send" class="sendButton">Send</button>
       </div> -->
     </div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

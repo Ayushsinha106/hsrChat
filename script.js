@@ -402,3 +402,30 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+// save chat as image
+document
+  .getElementById("saveChatButton")
+  .addEventListener("click", function () {
+    const chatContainer = document.getElementById("chatMessages");
+    const originalHeight = chatContainer.style.height;
+
+    // Temporarily expand the chat container to show all messages
+    chatContainer.style.height = "auto";
+
+    // Use html2canvas to capture the full chat content
+    html2canvas(chatContainer, { useCORS: true, logging: true })
+      .then((canvas) => {
+        // Restore the original height
+        chatContainer.style.height = originalHeight;
+
+        // Create a link to download the image
+        const link = document.createElement("a");
+        link.href = canvas.toDataURL("image/png");
+        link.download = "chat.png";
+        link.click();
+      })
+      .catch((err) => {
+        console.error("Error capturing chat content:", err);
+      });
+  });
