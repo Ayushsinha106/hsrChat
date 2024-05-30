@@ -29,6 +29,9 @@ const rightSelectedCharacterName = document.querySelector(
   "#rightSelectedCharacterName"
 );
 const chatContainer = document.getElementById("chatContainer");
+const actionForm = document.getElementById("actionForm");
+const actionInput = document.getElementById("actionInput");
+const actionSend = document.getElementById("actionSend");
 
 const profilePics = [
   "Acheron.jpg",
@@ -261,6 +264,18 @@ customCharaNameSend.onclick = (e) => {
   }
 };
 
+actionSend.onclick = (e) => {
+  e.preventDefault();
+  const message = actionInput.value;
+  chatMessage.innerHTML += `
+  <div class="actionMessage">
+            <img src="stickers/Icon_Dialogue_Warning.png" alt="" />
+            <p>${message}</p>
+          </div>
+  `;
+  modal.style.display = "none";
+};
+
 customCharaSend.onclick = (e) => {
   e.preventDefault();
   const url = customCharaInput.value;
@@ -276,6 +291,23 @@ customCharaSend.onclick = (e) => {
     leftUrl = url;
   }
 };
+
+// div hover to delete
+document.addEventListener("DOMContentLoaded", (event) => {
+  // Function to remove the clicked element
+  function removeElement(event) {
+    const targetElement = event.target.closest(
+      ".SenderMessage, .ReceiverMessage, .actionMessage"
+    );
+    if (targetElement) {
+      targetElement.remove();
+    }
+  }
+
+  // Add event listener to the parent container
+  const chatContainer = document.querySelector(".chat"); // Adjust the selector to your parent container
+  chatContainer.addEventListener("dblclick", removeElement);
+});
 
 //search
 document.addEventListener("DOMContentLoaded", function () {

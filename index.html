@@ -86,6 +86,10 @@
               </div>
             </div>
           </div>
+          <div class="actionMessage">
+            <img src="stickers/Icon_Dialogue_Warning.png" alt="" />
+            <p>Stelle has left the chat</p>
+          </div>
           <div class="SenderMessage">
             <div class="message-header">
               <div class="message-content">
@@ -95,6 +99,7 @@
                 </div>
               </div>
               <img src="profilePics/stelle.jpg" alt="stelle" />
+              <h3>&times;</h3>
             </div>
           </div> -->
         </div>
@@ -155,10 +160,20 @@
           <button class="sticker">
             <img src="stickers/sticker_224.png" alt="" />
           </button>
+          <form id="actionForm">
+            <input
+              type="text"
+              id="actionInput"
+              placeholder="Type any action..."
+            />
+            <button id="actionSend">action</button>
+          </form>
         </div>
       </div>
       <div class="dropdownContainer">
-        <span class="closeSelector">&times;</span>
+        <div class="closeSelector">
+          <span>&times;</span>
+        </div>
 
         <ul class="dropdown-menu">
           <input type="text" id="dropdownSearch" placeholder="Search..." />
