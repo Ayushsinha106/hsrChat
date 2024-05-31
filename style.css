@@ -53,7 +53,7 @@ main{
 /* Chat Style */
 .container{
     width: 100%;
-    height: 100vh;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -62,7 +62,7 @@ main{
 }
 .chat{
     width: 500px;
-    height: 600px;
+    min-height: 600px;
     background-color: #d3d9dd;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -82,13 +82,20 @@ main{
     border-radius: 10px; /* roundness of the scrollbar thumb */
     border: 2px solid #dfddde; /* creates padding around the thumb */
 }
-.hide-scrollbar::-webkit-scrollbar {
-    display: none;
+body::-webkit-scrollbar{
+    width: 5px;
 }
-.hide-scrollbar {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+body::-webkit-scrollbar-track {
+    background: #3d3030; /* color of the scrollbar track */
+    border-radius: 10px;
+    margin-right: 10px;
 }
+body::-webkit-scrollbar-thumb {
+    background-color: #464646; /* color of the scrollbar thumb */
+    border-radius: 10px; /* roundness of the scrollbar thumb */
+    /* border: 2px solid #dfddde; creates padding around the thumb */
+}
+
 .chat-header{
     background-color: #d3d9dd;
     color: black;
