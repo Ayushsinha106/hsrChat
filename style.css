@@ -40,7 +40,7 @@ main{
  .charDetail{
     height: 90px;
     width: 90px;
-    background-color: #d4b98a;
+    background-color: #ddcaa5;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -63,7 +63,7 @@ main{
 .chat{
     width: 500px;
     height: 600px;
-    background-color: #dfddde;
+    background-color: #d3d9dd;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -90,7 +90,7 @@ main{
     scrollbar-width: none;  /* Firefox */
 }
 .chat-header{
-    background-color: #dfddde;
+    background-color: #d3d9dd;
     color: black;
     border-bottom: 1px solid black;
     height: 50px;
@@ -185,7 +185,7 @@ img{
     /* width: 100%; */
     min-height: 40px;
     padding: 10px;
-    background-color:#d4b98a ;
+    background-color:#ddcaa5 ;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     border-top-left-radius: 10px;
@@ -193,6 +193,7 @@ img{
     max-width: 100%; 
     word-wrap: break-word; 
     overflow-wrap: break-word;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 .message-box img{
     height: 80px;
@@ -210,6 +211,7 @@ img{
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;  
     border-top-left-radius: 0;  
+    
 }
 .mes-box{
     background-color: transparent;
@@ -289,7 +291,7 @@ img{
 .dropdownContainer::-webkit-scrollbar-thumb {
     background-color: #464646; /* color of the scrollbar thumb */
     border-radius: 10px; /* roundness of the scrollbar thumb */
-    border: 2px solid #dfddde; /* creates padding around the thumb */
+    border: 2px solid #d3d9dd; /* creates padding around the thumb */
 }
 .dropdown-menu li a {
     text-decoration: none;
@@ -414,7 +416,7 @@ img{
 .stickerList::-webkit-scrollbar-thumb {
     background-color: #464646; /* color of the scrollbar thumb */
     border-radius: 10px; /* roundness of the scrollbar thumb */
-    border: 2px solid #dfddde; /* creates padding around the thumb */
+    border: 2px solid #d3d9dd; /* creates padding around the thumb */
 }
 .heading  {
     display: flex;

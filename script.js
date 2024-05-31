@@ -486,21 +486,23 @@ document
     // });
 
     // Temporarily set styles to capture the entire chat
-    chatContainer.classList.add("hide-scrollbar");
-    chatMessages.classList.add("hide-scrollbar");
+    chatContainer.style.height = "auto";
 
-    htmlToImage.toCanvas(container).then(function (canvas) {
-      screenshots.push(canvas);
-    });
+    // htmlToImage.toCanvas(container).then(function (canvas) {
+    //   screenshots.push(canvas);
+    // });
 
     // Use html2canvas to capture the full chat content
-    htmlToImage.toPng(container).then(function (dataUrl) {
-      console.log(dataUrl);
+    await htmlToImage.toPng(container).then(function (dataUrl) {
       var link = document.createElement("a");
       link.download = "chat.png";
       link.href = dataUrl;
       link.click();
     });
-    chatContainer.classList.remove("hide-scrollbar");
-    chatMessages.classList.remove("hide-scrollbar");
+
+    //return to original styles
+    chatContainer.style.height = originalChatHeight;
+
+    // chatContainer.classList.remove("hide-scrollbar");
+    // chatMessages.classList.remove("hide-scrollbar");
   });
