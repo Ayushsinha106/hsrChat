@@ -32,6 +32,9 @@ const chatContainer = document.getElementById("chatContainer");
 const actionForm = document.getElementById("actionForm");
 const actionInput = document.getElementById("actionInput");
 const actionSend = document.getElementById("actionSend");
+const detailBtn = document.getElementById("detailBtn");
+const detailModal = document.getElementById("detailModal");
+const detailModalClose = document.getElementById("detailModalClose");
 
 const profilePics = [
   "Acheron.jpg",
@@ -292,6 +295,13 @@ customCharaSend.onclick = (e) => {
   }
 };
 
+detailBtn.onclick = () => {
+  detailModal.style.display = "flex";
+};
+detailModalClose.onclick = () => {
+  detailModal.style.display = "none";
+};
+
 // div hover to delete
 document.addEventListener("DOMContentLoaded", (event) => {
   // Function to remove the clicked element
@@ -456,6 +466,8 @@ document.addEventListener("DOMContentLoaded", function () {
       input.value = "";
     }
   });
+
+  // detail Modal Open
 });
 
 // save chat as image
