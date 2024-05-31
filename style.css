@@ -475,7 +475,7 @@ h3{
 
 }
 #detailModal{
-    display: flex;
+    display: none;
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
@@ -484,7 +484,7 @@ h3{
     background-color: #cfbfad;
     margin: 10px;
     width: 600px;
-    height: 600px;
+    height: auto;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -494,6 +494,13 @@ h3{
 }
 h2{
     margin: 10px;
+}
+#detailModal p {
+    margin: 10px;
+}
+#detailModal button {
+    margin: 10px;
+    padding: 5px;
 }
 
 
