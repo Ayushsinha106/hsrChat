@@ -144,6 +144,14 @@
             />
             <button id="rightMessageSend">Send</button>
           </form>
+          <h4>OR select image</h4>
+          <input
+            type="file"
+            name="imageMessage"
+            id="imageMessageFile"
+            accept="image/*"
+            onchange="imageMessageSend()"
+          />
           <form id="customCharaForm">
             <input
               type="text"

@@ -35,6 +35,7 @@ const actionSend = document.getElementById("actionSend");
 const detailBtn = document.getElementById("detailBtn");
 const detailModal = document.getElementById("detailModal");
 const detailModalClose = document.getElementById("detailModalClose");
+const imageMessageFile = document.getElementById("imageMessageFile");
 
 const profilePics = [
   "Acheron.jpg",
@@ -231,6 +232,51 @@ const stickerSend = (e) => {
   modal.style.display = "none";
 };
 
+const imageMessageSend = () => {
+  const file = imageMessageFile.files[0];
+  if (file) {
+    const url = URL.createObjectURL(file);
+    console.log(url);
+    modal.style.display = "none";
+    if (Messagesend == "right") {
+      chatMessage.innerHTML += `
+            <div class="SenderMessage">
+                <div class="message-header">
+                  <div class="message-content">
+                    <span class="username">${rightName}</span>
+                    <div class="message-box mes-box">
+                    <img
+                    src="${url}"
+                    alt="img"
+                  />
+                    </div>
+                  </div>
+                  <img src="${rightUrl}" alt="stelle" />
+                </div>
+              </div>
+          `;
+    }
+    if (Messagesend == "left") {
+      chatMessage.innerHTML += `
+      <div class="ReceiverMessage">
+      <div class="message-header receiverHeader">
+      <img src="${leftUrl}" alt="stelle" />
+        <div class="message-content receiverContent">
+          <span class="username">${leftName}</span>
+          <div class="message-box receiver mes-box">
+          <img
+          src="${url}"
+          alt="img"
+        />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    `;
+    }
+  }
+};
 const customCharaSendFunc = () => {
   const file = customCharaFile.files[0];
   if (file) {

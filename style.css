@@ -322,7 +322,7 @@ img{
 
 /* MODAL */
 .modal {
-    display: none; /* Hidden by default */
+    display: flex; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
@@ -373,7 +373,9 @@ img{
     margin: 10px;
     cursor: pointer;
   }
-
+#imageMessageFile{
+    margin-bottom: 20px;
+}
   /* //sticker modal */
   .stickerConatiner {
     display: none; /* Hidden by default */
