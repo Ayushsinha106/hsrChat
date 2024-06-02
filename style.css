@@ -322,7 +322,7 @@ img{
 
 /* MODAL */
 .modal {
-    display: flex; /* Hidden by default */
+    display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
@@ -346,6 +346,7 @@ img{
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 80%;
   }
 
   /* The Close Button */
